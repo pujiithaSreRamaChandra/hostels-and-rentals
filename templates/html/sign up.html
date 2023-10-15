@@ -1,0 +1,57 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>
+        SIGN UP
+    </title>
+    <link rel="stylesheet" href="{% static 'css/sign up .css' %}"/>
+</head>
+<body>
+<html>
+<!DOCTYPE html>
+<head>
+    <title>Slide Navbar</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sign up .css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: white; font-weight: bold ">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+    <div class="signup">
+        <form id="studentsignin"  action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <label for="chk" aria-hidden="true">Student Sign up</label>
+            <input type="text" name="user_name" placeholder=" USER NAME" required="">
+            <input type="email" name="email" placeholder="EMAIL" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <input type="text" name="location" placeholder="location" required="">
+            <input type="date" name="dob" placeholder="DATE-OF-BIRTH" required="">
+            <input type="tel" name="phno" placeholder="PHONE NUMBER" required="">
+            <input type="text" name="clgname" placeholder="COLLEGE NAME" required="">
+
+            <button type="submit"> Sign up</button>
+        </form>
+    </div>
+
+    <div class="login">
+        <form id="studentlogin"  action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
